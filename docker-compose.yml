@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  commandservice:
+    container_name: command-service
+    hostname: commandservice
+    build: .
+    tty: true
+    volumes:
+      - ./command:/go/src/command
+    ports:
+      - 8082:8082
+    networks:
+      - external
+networks:
+  external:
+    name: sampledb_net
+    external: true
